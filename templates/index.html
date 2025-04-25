@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ⏰ 翻页时钟置顶 -->
+<!-- ✅ 保留这个 -->
+<div class="top-clock">
+  <div id="flipclock" class="flip-clock"></div>
+  <div class="current-date">
+    {{ now.strftime('%Y年%m月%d日') }} 星期{{ ['一','二','三','四','五','六','日'][now.weekday()] }}
+  </div>
+</div>
+
+
+<!-- 主容器内容整体下移 -->
+<div class="container">
+  <!-- ⏱ 专注模式 -->
+  <div class="card" id="focus">
+    <h3>专注模式</h3>
+    <div id="focus-timer">30:00</div>
+    <button class="control-btn">开始</button>
+  </div>
+
+  <!-- 🔔 提醒事项 -->
+  <div class="card" id="alarm">
+    <h3>提醒事项</h3>
+    <input type="text" id="reminder-text" placeholder="添加提醒内容">
+    <input type="time" id="alarm-time">
+    <button class="control-btn">添加</button>
+    <div class="reminder-list"></div>
+  </div>
+
+  <!-- 🎵 背景音乐 -->
+  <div class="card" id="music-control">
+    <h3>背景音乐</h3>
+<button class="green" data-mode="relax">放松</button>
+    <button class="blue" data-mode="classical">专注</button>
+    <button class="orange" id="music-btn">播放/暂停</button>
+  </div>
+
+  <!-- 📊 成绩记录 -->
+  <div class="card" id="score-record">
+    <h3>反馈记录</h3>
+    <textarea placeholder="输入学生反馈..."></textarea>
+  </div>
+
+  <!-- 📝 项目小笔记 -->
+  <div class="card" id="notes">
+    <h3>项目小笔记</h3>
+    <textarea placeholder="自动保存笔记..."></textarea>
+  </div>
+
+</div>
+
+<!-- ⏱ 弹窗提示 -->
+<div class="alert-overlay">
+  <div class="alert-box">时间到咯，该起来活动活动啦！</div>
+</div>
+
+{% endblock %}
+
